@@ -20,9 +20,10 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
-#include <math.h>
 #include <time.h>
 #include <assert.h>
+#define _GNU_SOURCE
+#include <math.h>
 
 #include "config.h"
 #ifdef HAVE_MALLOC_H
@@ -24233,8 +24234,13 @@ dwg_add_MLINE (Dwg_Object_BLOCK_HEADER *restrict blkhdr,
       // to calculate the rotation matrix, starting with the start_angle.
       if (i == 0)
         {
+#ifdef HAVE_SINCOS
+          double cosa, sina;
+          sincos (mlstyle->start_angle, &sina, &cosa);
+#else
           const double cosa = cos (mlstyle->start_angle);
           const double sina = sin (mlstyle->start_angle);
+#endif
           dir = _obj->verts[i].vertex_direction;
           // rotate by the mlstyle->start_angle
           dir.x = (dir.x * cosa) - (dir.y * sina);
