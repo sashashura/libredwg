@@ -6484,6 +6484,17 @@ dwg_add_LARGE_RADIAL_DIMENSION (Dwg_Object_BLOCK_HEADER *restrict blkhdr,
                                 const dwg_point_3d *restrict jog_point,
                                 const double leader_len) __nonnull_all;
 
+EXPORT Dwg_Entity_UNDERLAY*
+dwg_add_UNDERLAY (Dwg_Object_BLOCK_HEADER *restrict blkhdr,
+                  const char* filename,
+                  const dwg_point_2d *restrict ins_pt,
+                  const dwg_point_2d *restrict scale_vec, /* maybe NULL */
+                  const double rotation,
+                  const unsigned num_clip_verts,
+                  const dwg_point_2d *restrict clip_verts /* maybe NULL */)
+  __nonnull ((1,2));
+
+
 /* All the ACSH methods and 3d primitives are still experimental.
    They do not work yet properly */
 Dwg_Object_ACSH_BOX_CLASS*
@@ -6905,8 +6916,6 @@ dwg_add_WIPEOUTVARIABLES (Dwg_Data *dwg /* ... */) __nonnull_all;
 #define HAVE_NO_DWG_ADD_TEXTOBJECTCONTEXTDATA
 #define HAVE_NO_DWG_ADD_TVDEVICEPROPERTIES
 #define HAVE_NO_DWG_ADD_UCS_CONTROL
-#define HAVE_NO_DWG_ADD_UNDERLAY
-#define HAVE_NO_DWG_ADD_UNDERLAYDEFINITION
 #define HAVE_NO_DWG_ADD_UNKNOWN_ENT
 #define HAVE_NO_DWG_ADD_UNKNOWN_OBJ
 #define HAVE_NO_DWG_ADD_VERTEX_2D
@@ -7010,6 +7019,8 @@ dwg_add_WIPEOUTVARIABLES (Dwg_Data *dwg /* ... */) __nonnull_all;
 #define HAVE_DWG_ADD_TOLERANCE
 #define HAVE_DWG_ADD_TRACE
 #define HAVE_DWG_ADD_UCS
+#define HAVE_DWG_ADD_UNDERLAY
+#define HAVE_DWG_ADD_UNDERLAYDEFINITION
 #define HAVE_DWG_ADD_VBA_PROJECT
 #define HAVE_DWG_ADD_VIEW
 #define HAVE_DWG_ADD_VIEWPORT

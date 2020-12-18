@@ -64,6 +64,7 @@ test_add (const Dwg_Object_Type type, const char *restrict file, const int as_dx
   Dwg_Data *dwg;
   Dwg_Object *mspace;
   Dwg_Object_Ref *mspace_ref;
+  dwg_point_2d pt2d = {1.5, 2.5};
   dwg_point_3d pt1 = {1.5, 2.5, 0.2};
   dwg_point_3d pt2 = {2.5, 1.5, 0.0};
   Dwg_Object_BLOCK_HEADER *hdr;
@@ -650,10 +651,10 @@ test_add (const Dwg_Object_Type type, const char *restrict file, const int as_dx
           fail ("no VIEWPORT created");
       }
       break;
-    //case DWG_TYPE_UNDERLAYDEFINITION:
-    //case DWG_TYPE_UNDERLAY:
-    //  dwg_add_UNDERLAY (hdr, "test.pdf", &pt2d, NULL, 0.0, 0, NULL);
-    //  break;
+    case DWG_TYPE_UNDERLAYDEFINITION:
+    case DWG_TYPE_UNDERLAY:
+      dwg_add_UNDERLAY (hdr, "test.pdf", &pt2d, NULL, 0.0, 0, NULL);
+      break;
     case DWG_TYPE_ACSH_TORUS_CLASS:
       {
         const dwg_point_3d pt = { 1383.62, 418.5, 1158.76 };
